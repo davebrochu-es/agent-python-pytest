@@ -22,6 +22,8 @@ from reportportal_client.helpers import (
 from reportportal_client.service import _dict_to_payload
 from six import with_metaclass
 
+from pytest_reportportal.utils import is_master
+
 log = logging.getLogger(__name__)
 
 
@@ -207,7 +209,7 @@ class PyTestServiceClass(with_metaclass(Singleton, object)):
         hier_param = False
         display_suite_file_name = True
 
-        if not hasattr(session.config, 'workerinput'):
+        if is_master(session.config):
             hier_dirs = session.config.getini('rp_hierarchy_dirs')
             hier_module = session.config.getini('rp_hierarchy_module')
             hier_class = session.config.getini('rp_hierarchy_class')

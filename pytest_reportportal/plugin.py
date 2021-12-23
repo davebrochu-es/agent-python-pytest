@@ -14,6 +14,7 @@ from pytest_reportportal import LAUNCH_WAIT_TIMEOUT
 from reportportal_client.errors import ResponseError
 from reportportal_client.helpers import gen_attributes
 
+from utils import is_master
 from .config import AgentConfig
 from .listener import RPReportListener
 from .service import PyTestServiceClass
@@ -41,16 +42,6 @@ def check_connection(aconf):
         except requests.exceptions.RequestException as exc:
             log.exception(exc)
             aconf.pconfig._reportportal_configured = False
-
-
-def is_master(config):
-    """Validate workerinput attribute of the Config object.
-
-    True if the code, running the given pytest.config object,
-    is running as the xdist master node or not running xdist at all.
-    """
-    return not hasattr(config, 'workerinput')
-
 
 def wait_launch(rp_client):
     """Wait for the launch startup.

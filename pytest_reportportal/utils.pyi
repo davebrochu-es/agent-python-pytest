@@ -1,0 +1,3 @@
+from _pytest.config import Config as Config
+
+def is_master(config: Config) -> bool: ...

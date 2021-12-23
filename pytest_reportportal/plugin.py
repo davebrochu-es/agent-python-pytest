@@ -43,6 +43,7 @@ def check_connection(aconf):
             log.exception(exc)
             aconf.pconfig._reportportal_configured = False
 
+
 def wait_launch(rp_client):
     """Wait for the launch startup.
 

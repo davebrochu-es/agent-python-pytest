@@ -14,7 +14,7 @@ from pytest_reportportal import LAUNCH_WAIT_TIMEOUT
 from reportportal_client.errors import ResponseError
 from reportportal_client.helpers import gen_attributes
 
-from utils import is_master
+from pytest_reportportal.utils import is_master
 from .config import AgentConfig
 from .listener import RPReportListener
 from .service import PyTestServiceClass

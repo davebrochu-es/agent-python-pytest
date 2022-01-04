@@ -13,6 +13,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License
 """
+import random
+import time
+
 from tests.helpers import utils
 
 HIERARCHY_TESTS = \
@@ -157,3 +160,8 @@ HIERARCHY_TEST_PARAMETERS = [
     idx, test in
     enumerate(HIERARCHY_TESTS)
 ]
+
+
+def item_id_gen(**kwargs):
+    return "{}-{}-{}".format(kwargs['name'], str(round(time.time() * 1000)),
+                             random.randint(0, 9999))

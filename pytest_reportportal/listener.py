@@ -66,6 +66,8 @@ class RPReportListener(object):
         :return: None
         """
         report = (yield).get_result()
+        logging.debug("*****")
+        logging.debug(report)
 
         if report.longrepr:
             self.py_test_service.post_log(

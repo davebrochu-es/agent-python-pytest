@@ -67,6 +67,7 @@ class RPReportListener(object):
         """
         report = (yield).get_result()
         logging.debug("*****")
+        logging.debug(report.when)
         logging.debug(report)
 
         if report.longrepr:

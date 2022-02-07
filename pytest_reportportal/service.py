@@ -347,6 +347,9 @@ class PyTestServiceClass(with_metaclass(Singleton, object)):
         log.debug('ReportPortal - Finish TestItem: request_body=%s', fta_rq)
 
         parts = self._item_parts[test_item]
+        log.debug("_____ PARTS _____")
+        log.debug(parts)
+
         self.rp.finish_test_item(**fta_rq)
         while len(parts) > 0:
             part = parts.pop()
@@ -379,7 +382,7 @@ class PyTestServiceClass(with_metaclass(Singleton, object)):
         # To finish launch session str parameter is needed
         fl_rq = {
             'end_time': timestamp(),
-            'status': status
+            'status': status or "SKIPPED"
         }
         log.debug('ReportPortal - Finish launch: request_body=%s', fl_rq)
         self.rp.finish_launch(**fl_rq)
